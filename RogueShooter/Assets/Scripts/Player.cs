@@ -1,9 +1,15 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-    public ControlType controlType;
     public float speed;
+    public float health = 10f;
+
+
+    public ControlType controlType;
+    
     public Joystick joystick;
 
     private Rigidbody2D rb;
@@ -45,6 +51,18 @@ public class Player : MonoBehaviour {
         } else if (isFacingRight && moveVelocity.x < 0) {
             Flip();
         }
+    }
+
+    public void TakeDamage(float damage) {
+        health -= damage;
+        if (health <= 0) {
+            Die();
+        }
+    }
+
+    public void Die() {
+        Debug.Log("Our player jsut died!!!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void FixedUpdate() {
