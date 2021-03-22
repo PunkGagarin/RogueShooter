@@ -32,8 +32,7 @@ public class Enemy : MonoBehaviour
             speed = 0;
             stopTime -= Time.deltaTime;
         }
-
-        transform.Translate((player.transform.position - transform.position).normalized * speed * Time.deltaTime);
+        //transform.Translate((player.transform.position - transform.position).normalized * speed * Time.deltaTime);
     }
 
     public void TakeDamage(float damage) {
