@@ -47,9 +47,9 @@ public class Player : MonoBehaviour {
         }
 
         if (!isFacingRight && moveVelocity.x >= 0) {
-            Flip();
+            TransformUtils.Flip(transform, ref isFacingRight);
         } else if (isFacingRight && moveVelocity.x < 0) {
-            Flip();
+            TransformUtils.Flip(transform, ref isFacingRight);
         }
     }
 
@@ -67,12 +67,5 @@ public class Player : MonoBehaviour {
 
     private void FixedUpdate() {
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
-    }
-
-    private void Flip() {
-        isFacingRight = !isFacingRight;
-        Vector3 scaler = transform.localScale;
-        scaler.x *= -1;
-        transform.localScale = scaler;
     }
 }

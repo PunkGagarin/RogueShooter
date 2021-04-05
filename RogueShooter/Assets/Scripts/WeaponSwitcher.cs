@@ -9,15 +9,16 @@ public class WeaponSwitcher : MonoBehaviour {
         SwitchWeapon();
     }
 
-    public void SwitchWeapon() {
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            if (gun.activeSelf) {
-                gun.SetActive(false);
-                meleeWeapon.SetActive(true);
-            } else if (meleeWeapon.activeSelf) {
-                meleeWeapon.SetActive(false);
-                gun.SetActive(true);
-            }
+    public void SwitchWeapon()
+    {
+        if (!Input.GetKeyDown(KeyCode.Q)) 
+            return;
+        if (gun.activeSelf) {
+            gun.SetActive(false);
+            meleeWeapon.SetActive(true);
+        } else if (meleeWeapon.activeSelf) {
+            meleeWeapon.SetActive(false);
+            gun.SetActive(true);
         }
     }
 }

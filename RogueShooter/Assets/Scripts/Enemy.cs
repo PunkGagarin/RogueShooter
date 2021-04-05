@@ -1,8 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
-{
-
+public class Enemy : MonoBehaviour {
     private float timeBtwAttack;
     public float startTimeBtwAttack = 1f;
 
@@ -13,6 +11,8 @@ public class Enemy : MonoBehaviour
     private float stopTime;
     public float startStopTime;
 
+    private bool isFacingRight;
+
     public float damage;
 
     private Animator animator;
@@ -22,27 +22,39 @@ public class Enemy : MonoBehaviour
         player = FindObjectOfType<Player>();
         animator = GetComponent<Animator>();
         speed = normalSpeed;
+        isFacingRight = player.transform.position.x > transform.position.x;
     }
 
-
     private void Update() {
-        if(stopTime <= 0) {
+        if (stopTime <= 0) {
             speed = normalSpeed;
-        } else {
+        }
+        else {
             speed = 0;
             stopTime -= Time.deltaTime;
         }
-        //transform.Translate((player.transform.position - transform.position).normalized * speed * Time.deltaTime);
+        if (!isFacingRight && player.transform.position.x > transform.position.x) {
+            TransformUtils.Flip(transform, ref isFacingRight);
+            // transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (isFacingRight && player.transform.position.x < transform.position.x) {
+            TransformUtils.Flip(transform, ref isFacingRight);
+            // transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        // if ((player.transform.position - transform.position).magnitude > 1f)
+        // transform.Translate((player.transform.position - transform.position).normalized * speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
     public void TakeDamage(float damage) {
+        stopTime = startStopTime;
         health -= damage;
-        if(health <= 0) {
+        if (health <= 0) {
             Die();
         }
     }
 
-    public void Die() {
+    private void Die() {
         //TODO: add deathEffect
         Destroy(gameObject);
     }
@@ -50,7 +62,8 @@ public class Enemy : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
             animator.SetTrigger("Attack");
-        } else {
+        }
+        else {
             timeBtwAttack -= Time.deltaTime;
         }
     }

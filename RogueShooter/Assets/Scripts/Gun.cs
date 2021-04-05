@@ -1,22 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour {
 
     public float offset = 0f;
     public Bullet bullet;
+
     public Transform firePoint;
+
     //public Bullet bullet;
     public float bulletLifetime = 2f;
-
 
     private float timeBetweenShts;
     public float startTimeBetweenShts = 0.25f;
 
-    void Update() {
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        float rotZ = Mathf.Atan2(difference.x, difference.y) * -Mathf.Rad2Deg;
+    private Player player;
+    private Vector3 difference;
+    private float rotZ;
+
+    private void Update() {
+        
+        difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        rotZ = Mathf.Atan2(difference.x, difference.y) * -Mathf.Rad2Deg;
+        
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ + offset);
 
         if (timeBetweenShts <= 0) {
@@ -30,4 +35,3 @@ public class Gun : MonoBehaviour {
         timeBetweenShts -= Time.deltaTime;
     }
 }
- 
