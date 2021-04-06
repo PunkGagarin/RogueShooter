@@ -8,7 +8,6 @@ public class Gun : MonoBehaviour {
     public Transform firePoint;
 
     //public Bullet bullet;
-    public float bulletLifetime = 2f;
 
     private float timeBetweenShts;
     public float startTimeBetweenShts = 0.25f;
@@ -26,10 +25,9 @@ public class Gun : MonoBehaviour {
 
         if (timeBetweenShts <= 0) {
             if (Input.GetMouseButton(0)) {
-                GameObject firedBullet = Instantiate(bullet.gameObject, firePoint.position, transform.rotation);
+                Instantiate(bullet.gameObject, firePoint.position, transform.rotation);
                 timeBetweenShts = startTimeBetweenShts;
                 //firedBullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bullet.speed, ForceMode2D.Impulse);
-                Destroy(firedBullet, bulletLifetime);
             }
         }
         timeBetweenShts -= Time.deltaTime;

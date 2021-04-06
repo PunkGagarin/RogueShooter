@@ -1369,7 +1369,6 @@ MonoBehaviour:
   offset: 0
   bullet: {fileID: 4229604245626895148, guid: e094ca85187404548aa4c29db99b3c0c, type: 3}
   firePoint: {fileID: 1101233789}
-  bulletLifetime: 2
   startTimeBetweenShts: 0.25
 --- !u!212 &1730102849
 SpriteRenderer:

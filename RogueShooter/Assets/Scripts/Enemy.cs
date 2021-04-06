@@ -32,13 +32,13 @@ public class Enemy : MonoBehaviour {
             speed = 0;
             stopTime -= Time.deltaTime;
         }
-        if (!isFacingRight && player.transform.position.x > transform.position.x) {
-            TransformUtils.Flip(transform, ref isFacingRight);
-            // transform.eulerAngles = new Vector3(0, 180, 0);
+        if (player.transform.position.x > transform.position.x) {
+            // TransformUtils.Flip(transform, ref isFacingRight);
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
-        else if (isFacingRight && player.transform.position.x < transform.position.x) {
-            TransformUtils.Flip(transform, ref isFacingRight);
-            // transform.eulerAngles = new Vector3(0, 0, 0);
+        else if (player.transform.position.x < transform.position.x) {
+            // TransformUtils.Flip(transform, ref isFacingRight);
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
         // if ((player.transform.position - transform.position).magnitude > 1f)
         // transform.Translate((player.transform.position - transform.position).normalized * speed * Time.deltaTime);
@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void TakeDamage(float damage) {
+        Debug.Log("enemy just taken "+ damage + "damage");
         stopTime = startStopTime;
         health -= damage;
         if (health <= 0) {

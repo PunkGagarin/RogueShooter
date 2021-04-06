@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   damage: 1
-  lifeTime: 0.2
+  lifeTime: 5
   distance: 0.5
   whatShouldWeHit:
     serializedVersion: 2
