@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 
-public class Player_MeleeAttack : MonoBehaviour {
+public class PlayerMeleeAttack : MonoBehaviour {
     private float timeBtwAttack;
+
     public float startTimeBtwAttack;
     //public float attackAnimationLenght = 0.11f;
 
@@ -12,21 +12,25 @@ public class Player_MeleeAttack : MonoBehaviour {
     public float attackRange;
     public int damage;
 
+    private WeaponSwitcher weaponSwitcher;
     private Animator animator;
-
+    private static readonly int Attack = Animator.StringToHash("Attack");
 
     private void Start() {
         animator = GetComponent<Animator>();
+        weaponSwitcher = GetComponent<WeaponSwitcher>();
     }
+
     private void Update() {
         if (timeBtwAttack <= 0) {
-            if (Input.GetMouseButton(0)) {
-                animator.SetTrigger("Attack");
-                //There is another aproach through Coroutine like below
+            if (Input.GetMouseButton(0) && weaponSwitcher.meleeWeapon.activeSelf) {
+                animator.SetTrigger(Attack);
+                //There is another approach through Coroutine like below
                 //StartCoroutine(OnAttack());
                 timeBtwAttack = startTimeBtwAttack;
             }
-        } else {
+        }
+        else {
             timeBtwAttack -= Time.deltaTime;
         }
     }
@@ -36,17 +40,13 @@ public class Player_MeleeAttack : MonoBehaviour {
         Debug.Log("On attack method");
         HashSet<GameObject> parents = new HashSet<GameObject>();
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyMask);
-        foreach (var enemyHitted in enemies) {
-            parents.Add(enemyHitted.gameObject);
+        foreach (var enemyHit in enemies) {
+            parents.Add(enemyHit.gameObject);
         }
         foreach (var parent in parents) {
             parent.GetComponent<Enemy>().TakeDamage(damage);
             Debug.Log("enemy taken damage");
         }
-    }
-
-    public void OnAnythingElse() {
-
     }
 
     private void OnDrawGizmosSelected() {

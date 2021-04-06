@@ -411,30 +411,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 744515582407778437, guid: cd8bb96721048c244baae96fc2cc20db, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 744515582407778438, guid: cd8bb96721048c244baae96fc2cc20db, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 744515582407778439, guid: cd8bb96721048c244baae96fc2cc20db, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 744515582407778439, guid: cd8bb96721048c244baae96fc2cc20db, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 744515582407778439, guid: cd8bb96721048c244baae96fc2cc20db, type: 3}
-      propertyPath: m_LinearDrag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 744515582407778439, guid: cd8bb96721048c244baae96fc2cc20db, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 744515582407778554, guid: cd8bb96721048c244baae96fc2cc20db, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -953,7 +929,7 @@ MonoBehaviour:
   attackPos: {fileID: 36917974}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   attackRange: 0.8
   damage: 2
 --- !u!1 &965142520

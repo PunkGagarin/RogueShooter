@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour {
     public float startTimeBtwAttack = 1f;
 
     public float health;
-    public float speed;
+    private float speed;
     public float normalSpeed = 5f;
 
     private float stopTime;
@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour {
     private void Start() {
         player = FindObjectOfType<Player>();
         animator = GetComponent<Animator>();
-        speed = normalSpeed;
         isFacingRight = player.transform.position.x > transform.position.x;
     }
 
@@ -70,5 +69,6 @@ public class Enemy : MonoBehaviour {
 
     public void OnEnemyAttack() {
         player.TakeDamage(damage);
+        timeBtwAttack = startTimeBtwAttack;
     }
 }
