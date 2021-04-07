@@ -22,14 +22,14 @@ public class Bullet : MonoBehaviour {
             if (hitObject.CompareTag("Enemy")) {
                 hitObject.GetComponent<Enemy>().TakeDamage(damage);
             }
+            GameObject effect = Instantiate(bulletImpactEffect, transform.position, Quaternion.identity);
+            Destroy(effect, lifeTime);
             DestroyBullet();
         }
         transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
 
     private void DestroyBullet() {
-        GameObject effect = Instantiate(bulletImpactEffect, transform.position, Quaternion.identity);
-        Destroy(effect, lifeTime);
         Destroy(gameObject);
     }
 }

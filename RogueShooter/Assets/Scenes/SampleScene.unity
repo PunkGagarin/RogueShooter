@@ -471,6 +471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 680761018}
   - component: {fileID: 680761019}
+  - component: {fileID: 680761020}
   m_Layer: 0
   m_Name: Player_MeleeWeapon
   m_TagString: Untagged
@@ -544,6 +545,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &680761020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680761017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f365246c4c7dc46be88361c471fb9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimeBtwAttack: 0.5
+  attackPos: {fileID: 36917974}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 128
+  attackRange: 0.8
+  damage: 2
+--- !u!114 &696066244 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+  m_PrefabInstance: {fileID: 1148024819}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &754464297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -649,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_Name
-      value: Fixed Joystick
+      value: MovementJoystick
       objectReference: {fileID: 0}
     - target: {fileID: 2929252285020697096, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_SizeDelta.x
@@ -879,7 +910,8 @@ MonoBehaviour:
   speed: 7.5
   health: 10
   controlType: 0
-  joystick: {fileID: 901442498}
+  movementJoystick: {fileID: 901442498}
+  attackJoystick: {fileID: 696066244}
 --- !u!95 &949693303
 Animator:
   serializedVersion: 3
@@ -1149,7 +1181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_Name
-      value: Fixed Joystick (1)
+      value: AttackJoystick
       objectReference: {fileID: 0}
     - target: {fileID: 2929252285020697096, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1369,6 +1401,7 @@ MonoBehaviour:
   offset: 0
   bullet: {fileID: 4229604245626895148, guid: e094ca85187404548aa4c29db99b3c0c, type: 3}
   firePoint: {fileID: 1101233789}
+  attackJoystick: {fileID: 696066244}
   startTimeBetweenShts: 0.25
 --- !u!212 &1730102849
 SpriteRenderer:

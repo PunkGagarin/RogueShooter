@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
     private Player player;
 
     private void Start() {
-        player = FindObjectOfType<Player>();
+        player = Player.GetInstance;
         animator = GetComponent<Animator>();
         isFacingRight = player.transform.position.x > transform.position.x;
     }
