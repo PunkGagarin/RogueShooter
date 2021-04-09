@@ -2,11 +2,13 @@
 
 public class EnemyGun : AbstractGun {
 
+    public GameObject gunGameObject;
+
     protected override void NavigateWeapon() {
         direction = player.transform.position - transform.position;
         rotZ = Mathf.Atan2(direction.x, direction.y) * -Mathf.Rad2Deg;
         
-        firePoint.rotation = Quaternion.Euler(0f, 0f, rotZ + offset);
+        gunGameObject.transform.rotation = Quaternion.Euler(0f, 0f, rotZ + offset);
     }
 
     protected override void ShootBullet() {

@@ -767,10 +767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa55600c9eb9407189a0627c11ed0e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: 0
+  offset: -90
   bullet: {fileID: 4229604245626895148, guid: e899f4a3a24248e46945de9590f1e0ce, type: 3}
   firePoint: {fileID: 7829521874340448499}
   startTimeBetweenShts: 1
+  gunGameObject: {fileID: 7829521875157082326}
 --- !u!1 &8732641437375863869
 GameObject:
   m_ObjectHideFlags: 0
