@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void OnEnemyAttack() {
-        player.TakeDamage(damage);
+        player.ChangeHealth(damage);
         timeBtwAttack = startTimeBtwAttack;
     }
 }

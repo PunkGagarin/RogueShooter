@@ -5,7 +5,7 @@ public abstract class AbstractGun : MonoBehaviour {
     public Bullet bullet;
 
     public Transform firePoint;
-    protected float timeBetweenShts;
+    public float timeBetweenShts;
     public float startTimeBetweenShts = 0.25f;
 
     protected Vector3 direction;

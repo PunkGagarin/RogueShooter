@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,42 +24,31 @@ public class Player : MonoBehaviour {
 
     #region Singleton
 
-    private static Player instance;
-
-    public static Player GetInstance => instance;
+    public static Player GetInstance { get; private set; }
 
     public void Awake() {
-        if (instance == null) {
-            instance = this;
+        if (GetInstance == null) {
+            GetInstance = this;
         }
     }
 
     #endregion
 
-    void Start() {
+    private void Start() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    void Update() {
+    private void Update() {
         UpdateControlSettings();
+        
         moveVelocity = moveVelocity.normalized * speed;
 
-        if (moveVelocity.x == 0 && moveVelocity.y == 0) {
-            animator.SetBool("isRunning", false);
-        }
-        else {
-            animator.SetBool("isRunning", true);
-        }
+        PlayMovementAnimation();
 
-        if (!isFacingRight && moveVelocity.x >= 0) {
-            TransformUtils.Flip(transform, ref isFacingRight);
-        }
-        else if (isFacingRight && moveVelocity.x < 0) {
-            TransformUtils.Flip(transform, ref isFacingRight);
-        }
+        CheckForFlip();
     }
-
+    
     private void UpdateControlSettings() {
         if (Input.GetKeyDown(KeyCode.Y))
             controlType = controlType == ControlType.Android ? ControlType.PC : ControlType.Android;
@@ -82,14 +70,32 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void TakeDamage(float damage) {
-        health -= damage;
+    private void PlayMovementAnimation() {
+        if (moveVelocity.x == 0 && moveVelocity.y == 0) {
+            animator.SetBool("isRunning", false);
+        }
+        else {
+            animator.SetBool("isRunning", true);
+        }
+    }
+    
+    private void CheckForFlip() {
+        if (!isFacingRight && moveVelocity.x >= 0) {
+            TransformUtils.Flip(transform, ref isFacingRight);
+        }
+        else if (isFacingRight && moveVelocity.x < 0) {
+            TransformUtils.Flip(transform, ref isFacingRight);
+        }
+    }
+
+    public void ChangeHealth(float healthDifference) {
+         health = Mathf.Clamp(health -= healthDifference, 0, health) ;
         if (health <= 0) {
             Die();
         }
     }
 
-    public void Die() {
+    private void Die() {
         Debug.Log("Our player jsut died!!!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

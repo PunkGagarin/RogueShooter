@@ -9,7 +9,7 @@ public class WeaponSwitcher : MonoBehaviour {
         SwitchWeapon();
     }
 
-    public void SwitchWeapon()
+    private void SwitchWeapon()
     {
         if (!Input.GetKeyDown(KeyCode.Q)) 
             return;

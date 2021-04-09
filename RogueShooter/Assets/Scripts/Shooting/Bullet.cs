@@ -19,8 +19,11 @@ public class Bullet : MonoBehaviour {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatShouldWeHit);
         Collider2D hitObject = hitInfo.collider;
         if (hitObject != null) {
-            if (hitObject.CompareTag("Enemy")) {
-                hitObject.GetComponent<Enemy>().TakeDamage(damage);
+            if (hitObject.TryGetComponent(out Enemy enemy)) {
+                enemy.TakeDamage(damage);
+            }
+            else if (hitObject.TryGetComponent(out Player player)) {
+                player.ChangeHealth(damage);
             }
             GameObject effect = Instantiate(bulletImpactEffect, transform.position, Quaternion.identity);
             Destroy(effect, lifeTime);

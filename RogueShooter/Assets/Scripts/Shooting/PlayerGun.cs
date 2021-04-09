@@ -24,7 +24,7 @@ public class PlayerGun : AbstractGun {
     }
 
     private bool PcAttack() {
-        return Input.GetMouseButton(0) && player.controlType == Player.ControlType.PC;
+        return player.controlType == Player.ControlType.PC && Input.GetMouseButton(0);
     }
 
     private bool AndroidAttack() {
