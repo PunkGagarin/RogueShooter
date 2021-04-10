@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4370535992142349570}
   - component: {fileID: 4229604245626895148}
   m_Layer: 0
-  m_Name: Player_Bullet
+  m_Name: PlayerGunBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   damage: 1
-  lifeTime: 5
+  lifeTime: 3
   distance: 0.5
   whatShouldWeHit:
     serializedVersion: 2

@@ -29,6 +29,14 @@ public class Enemy : MonoBehaviour {
     }
 
     private void Update() {
+        CheckForStop();
+        
+        EnemyFlip();
+        
+        EnemyMove();
+    }
+
+    private void CheckForStop() {
         if (stopTime <= 0) {
             speed = normalSpeed;
         }
@@ -36,6 +44,9 @@ public class Enemy : MonoBehaviour {
             speed = 0;
             stopTime -= Time.deltaTime;
         }
+    }
+
+    private void EnemyFlip() {
         if (player.transform.position.x > transform.position.x) {
             // TransformUtils.Flip(transform, ref isFacingRight);
             transform.eulerAngles = new Vector3(0, 180, 0);
@@ -44,6 +55,9 @@ public class Enemy : MonoBehaviour {
             // TransformUtils.Flip(transform, ref isFacingRight);
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
+    }
+    
+    private void EnemyMove() {
         // if ((player.transform.position - transform.position).magnitude > 1f)
         // transform.Translate((player.transform.position - transform.position).normalized * speed * Time.deltaTime);
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);

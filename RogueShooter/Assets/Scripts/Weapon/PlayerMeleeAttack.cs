@@ -5,7 +5,6 @@ public class PlayerMeleeAttack : MonoBehaviour {
     private float timeBtwAttack;
 
     public float startTimeBtwAttack;
-    //public float attackAnimationLenght = 0.11f;
 
     public Transform attackPos;
     public float attackRange;
@@ -16,11 +15,13 @@ public class PlayerMeleeAttack : MonoBehaviour {
     private static readonly int Attack = Animator.StringToHash("Attack");
 
     private void Update() {
+        MeleeAttack();
+    }
+
+    private void MeleeAttack() {
         if (timeBtwAttack <= 0) {
             if (Input.GetMouseButton(0)) {
                 animator.SetTrigger(Attack);
-                //There is another approach through Coroutine like below
-                //StartCoroutine(OnAttack());
                 timeBtwAttack = startTimeBtwAttack;
             }
         }
@@ -30,7 +31,6 @@ public class PlayerMeleeAttack : MonoBehaviour {
     }
 
     public void OnAttack() {
-        //yield return new WaitForSeconds(attackAnimationLenght);
         Debug.Log("On attack method");
         HashSet<GameObject> parents = new HashSet<GameObject>();
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyMask);

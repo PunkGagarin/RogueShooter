@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4370535992142349570}
   - component: {fileID: 4229604245626895148}
   m_Layer: 0
-  m_Name: Enemy_Bullet
+  m_Name: PlayerSubMachineBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6872155125668877461}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &5477590095084192002
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 12
-  m_Sprite: {fileID: 6535177623956169837, guid: e98feed0ec2b7aa4792b9ea439b0e7c4, type: 3}
+  m_Sprite: {fileID: 2208703988740019828, guid: f6e23f9297f6889458daa25b8eb79e70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.39843747, y: 0.75390625}
+  m_Size: {x: 0.3515625, y: 0.7421875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -123,8 +123,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.40234375, y: 0.75390625}
-    newSize: {x: 0.39843747, y: 0.75390625}
+    oldSize: {x: 0.3515625, y: 0.7421875}
+    newSize: {x: 0.3515625, y: 0.7421875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -144,11 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c8f763acef8964bb6f8f139ec5e1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 30
   damage: 1
   lifeTime: 3
   distance: 0.5
   whatShouldWeHit:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 192
   bulletImpactEffect: {fileID: 8941728734931552160, guid: 2f8cccec94cf949458092b6dbd05105e, type: 3}

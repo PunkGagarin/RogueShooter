@@ -35,7 +35,7 @@ public class PlayerGun : AbstractGun {
     protected override void ShootBullet() {
         if (!PcAttack() && !AndroidAttack()) 
             return;
-        Instantiate(bullet.gameObject, firePoint.position, transform.rotation);
+        Instantiate(bullet.gameObject, firePoint.position, firePoint.rotation);
         timeBetweenShts = startTimeBetweenShts;
         //firedBullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bullet.speed, ForceMode2D.Impulse);
     }
