@@ -20,6 +20,6 @@ public class ShieldPickUp : PickUpItem {
     private void SetShieldUiActive() {
         shieldUI.SetUiActive();
         shieldUI.isShieldActive = true;
-
+        shieldUI.ResetShield();
     }
 }

@@ -23,7 +23,8 @@ public class PlayerMeleeAttack : MonoBehaviour {
 
     private void Update() {
         if (timeBtwAttack <= 0) {
-            if (Input.GetMouseButton(0) && weaponSwitcher.meleeWeapon.activeSelf) {
+            if (Input.GetMouseButton(0) && weaponSwitcher.meleeWeapon.activeInHierarchy) {
+                Debug.Log(weaponSwitcher.meleeWeapon);
                 animator.SetTrigger(Attack);
                 //There is another approach through Coroutine like below
                 //StartCoroutine(OnAttack());

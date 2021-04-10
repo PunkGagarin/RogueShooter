@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class ShieldUI : MonoBehaviour {
 
-    public float duration;
+    public float startDuration;
+    private float duration;
     public GameObject shieldUi;
 
     [HideInInspector] public bool isShieldActive;
@@ -51,7 +52,8 @@ public class ShieldUI : MonoBehaviour {
         shieldImage.fillAmount -= amount/10;
     }
 
-    public void ResetDuration() {
-        duration = 1f;
+    public void ResetShield() {
+        duration = startDuration;
+        shieldImage.fillAmount = 1f;
     }
 }

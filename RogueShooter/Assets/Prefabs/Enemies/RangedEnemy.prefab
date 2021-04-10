@@ -555,6 +555,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTimeBtwAttack: 1
+  isRanged: 1
+  meleeWeapon: {fileID: 8732641437375863869}
   health: 3
   normalSpeed: 3
   startStopTime: 0.7

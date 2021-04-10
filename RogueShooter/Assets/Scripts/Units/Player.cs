@@ -20,7 +20,6 @@ public class Player : MonoBehaviour {
     private ShieldUI shieldUI;
 
     [HideInInspector] public GameObject shield;
-    // public ShieldUI shieldUI;
 
     public enum ControlType {
         PC,

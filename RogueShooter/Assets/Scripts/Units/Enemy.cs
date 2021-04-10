@@ -3,6 +3,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
     private float timeBtwAttack;
     public float startTimeBtwAttack = 1f;
+    public bool isRanged;
+    public GameObject meleeWeapon;
 
     public float health;
     private float speed;
@@ -22,6 +24,8 @@ public class Enemy : MonoBehaviour {
         player = Player.GetInstance;
         animator = GetComponent<Animator>();
         isFacingRight = player.transform.position.x > transform.position.x;
+        if(isRanged)
+            meleeWeapon.SetActive(false);
     }
 
     private void Update() {
@@ -60,6 +64,9 @@ public class Enemy : MonoBehaviour {
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
+        if(isRanged)
+            return;
+        
         if (collision.CompareTag("Player")) {
             animator.SetTrigger("Attack");
         }
