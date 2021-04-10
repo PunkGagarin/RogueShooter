@@ -666,18 +666,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680761017}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6f365246c4c7dc46be88361c471fb9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startTimeBtwAttack: 0.5
   attackPos: {fileID: 36917974}
+  attackRange: 0.8
+  damage: 2
   enemyMask:
     serializedVersion: 2
     m_Bits: 128
-  attackRange: 0.8
-  damage: 2
+  animator: {fileID: 949693303}
 --- !u!114 &696066244 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
@@ -931,7 +932,6 @@ GameObject:
   - component: {fileID: 949693303}
   - component: {fileID: 949693302}
   - component: {fileID: 949693304}
-  - component: {fileID: 949693305}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1060,25 +1060,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeWeapon: {fileID: 1730102846}
   meleeWeapon: {fileID: 680761017}
---- !u!114 &949693305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 949693297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6f365246c4c7dc46be88361c471fb9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startTimeBtwAttack: 0.5
-  attackPos: {fileID: 36917974}
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 128
-  attackRange: 0.8
-  damage: 2
 --- !u!1 &965142520
 GameObject:
   m_ObjectHideFlags: 0

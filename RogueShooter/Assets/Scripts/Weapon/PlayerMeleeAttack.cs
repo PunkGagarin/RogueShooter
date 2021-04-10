@@ -8,23 +8,16 @@ public class PlayerMeleeAttack : MonoBehaviour {
     //public float attackAnimationLenght = 0.11f;
 
     public Transform attackPos;
-    public LayerMask enemyMask;
     public float attackRange;
     public int damage;
 
-    private WeaponSwitcher weaponSwitcher;
-    private Animator animator;
+    public LayerMask enemyMask;
+    public Animator animator;
     private static readonly int Attack = Animator.StringToHash("Attack");
-
-    private void Start() {
-        animator = GetComponent<Animator>();
-        weaponSwitcher = GetComponent<WeaponSwitcher>();
-    }
 
     private void Update() {
         if (timeBtwAttack <= 0) {
-            if (Input.GetMouseButton(0) && weaponSwitcher.meleeWeapon.activeInHierarchy) {
-                Debug.Log(weaponSwitcher.meleeWeapon);
+            if (Input.GetMouseButton(0)) {
                 animator.SetTrigger(Attack);
                 //There is another approach through Coroutine like below
                 //StartCoroutine(OnAttack());
