@@ -1,18 +1,26 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
-    public float speed;
     public float health = 10f;
 
+    //TODO: вынести в контроллер ?
     public ControlType controlType;
-
     public Joystick movementJoystick;
     public Joystick attackJoystick;
+    public float speed;
 
     private Rigidbody2D rb;
     private Animator animator;
+
+    private HpBarUI hpBarUI;
+    private ShieldUI shieldUI;
+
+    [HideInInspector] public GameObject shield;
+    // public ShieldUI shieldUI;
 
     public enum ControlType {
         PC,
@@ -37,18 +45,22 @@ public class Player : MonoBehaviour {
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        hpBarUI = HpBarUI.GetInstance;
+        shieldUI = ShieldUI.GetInstance;
+        
+        hpBarUI.SetHealth(health);
     }
 
     private void Update() {
         UpdateControlSettings();
-        
+
         moveVelocity = moveVelocity.normalized * speed;
 
         PlayMovementAnimation();
 
         CheckForFlip();
     }
-    
+
     private void UpdateControlSettings() {
         if (Input.GetKeyDown(KeyCode.Y))
             controlType = controlType == ControlType.Android ? ControlType.PC : ControlType.Android;
@@ -78,7 +90,7 @@ public class Player : MonoBehaviour {
             animator.SetBool("isRunning", true);
         }
     }
-    
+
     private void CheckForFlip() {
         if (!isFacingRight && moveVelocity.x >= 0) {
             TransformUtils.Flip(transform, ref isFacingRight);
@@ -89,7 +101,12 @@ public class Player : MonoBehaviour {
     }
 
     public void ChangeHealth(float healthDifference) {
-         health = Mathf.Clamp(health -= healthDifference, 0, health) ;
+        shieldUI.ReduceAmountBy(1);
+        if (shield.activeInHierarchy && healthDifference > 0)
+            return;
+
+        health = Mathf.Clamp(health -= healthDifference, 0, health);
+        hpBarUI.SetHealth(health);
         if (health <= 0) {
             Die();
         }
@@ -97,6 +114,7 @@ public class Player : MonoBehaviour {
 
     private void Die() {
         Debug.Log("Our player jsut died!!!");
+        Destroy(gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

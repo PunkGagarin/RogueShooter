@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PickedUp : MonoBehaviour {
+public class PotionPickUp : PickUpItem {
 
     public float healPoint;
     
@@ -8,6 +8,7 @@ public class PickedUp : MonoBehaviour {
         if (!other.TryGetComponent(out Player player)) 
             return;
         player.ChangeHealth(-healPoint);
+        Instantiate(pickUpEffect, effectPoint.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
