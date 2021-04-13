@@ -21,6 +21,16 @@ public class Player : MonoBehaviour {
 
     [HideInInspector] public GameObject shield;
 
+    #region Deligate for MeleeAttack
+    //TODO: вынести в отдельный класс на игроке?
+    private PlayerMeleeAttack meleeAttack;
+
+    public void OnAttack() {
+        meleeAttack.OnAttack();
+    }
+
+    #endregion
+
     public enum ControlType {
         PC,
         Android
@@ -44,6 +54,9 @@ public class Player : MonoBehaviour {
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
+        //TODO: если у нас несколько инстансов этого скрипта, можем то при обращении к родителю или gameobject что получим?
+        meleeAttack = FindObjectOfType<PlayerMeleeAttack>();
         hpBarUI = HpBarUI.GetInstance;
         shieldUI = ShieldUI.GetInstance;
         

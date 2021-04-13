@@ -30,6 +30,7 @@ public class PlayerMeleeAttack : MonoBehaviour {
         }
     }
 
+    //TODO: т.к. аниматор не видит детей объекта, нужно делегировать эту функцию родителю.
     public void OnAttack() {
         Debug.Log("On attack method");
         HashSet<GameObject> parents = new HashSet<GameObject>();

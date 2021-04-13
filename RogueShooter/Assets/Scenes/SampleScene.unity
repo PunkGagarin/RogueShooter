@@ -178,14 +178,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100057832}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3029109, y: 0.1904, z: 0}
-  m_LocalScale: {x: 1.3, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0, z: 0.7749847, w: 0.63197994}
+  m_LocalPosition: {x: -0.276, y: -0.008999999, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 116048264}
-  m_Father: {fileID: 525546078}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 1884870678}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 101.607}
 --- !u!114 &100057834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,11 +198,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcbe08fa9042392408f99404d50854ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: 90
+  offset: 0
   bullet: {fileID: 4229604245626895148, guid: 08d1284483fa8e94aa09228e1e0d0f11, type: 3}
   firePoint: {fileID: 116048264}
   timeBetweenShts: 0
-  startTimeBetweenShts: 0.25
+  startTimeBetweenShts: 0.1
   attackJoystick: {fileID: 696066244}
 --- !u!212 &100057835
 SpriteRenderer:
@@ -244,7 +244,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: -406189587192255488, guid: cd18ad4b591f31e438f733ca39f405a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63d9fda317f957f429689585f7a5c2cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,13 +278,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116048263}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.038, y: 0.166, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.368, y: 0.888, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 100057833}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232607724
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,9 +575,7 @@ Transform:
   - {fileID: 766796658}
   - {fileID: 450226973}
   - {fileID: 1884870678}
-  - {fileID: 1730102847}
   - {fileID: 1837802845}
-  - {fileID: 100057833}
   m_Father: {fileID: 949693298}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -739,7 +737,7 @@ Transform:
   m_Children:
   - {fileID: 36917974}
   m_Father: {fileID: 1884870678}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -214.174}
 --- !u!212 &680761019
 SpriteRenderer:
@@ -921,6 +919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpEffect: {fileID: 0}
   effectPoint: {fileID: 0}
+  weapon: {fileID: 100057832}
 --- !u!70 &729586095
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1305,6 +1304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824b352b02fbbc3429a5bb4a4b041fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponObjects:
+  - {fileID: 1730102846}
+  - {fileID: 680761017}
   rangeWeapon: {fileID: 1730102846}
   meleeWeapon: {fileID: 680761017}
 --- !u!1 &965142520
@@ -1876,7 +1878,7 @@ GameObject:
   - component: {fileID: 1730102849}
   - component: {fileID: 1730102848}
   m_Layer: 8
-  m_Name: Gun
+  m_Name: Automate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1889,13 +1891,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730102846}
-  m_LocalRotation: {x: -0, y: -0, z: -0.56925905, w: 0.8221583}
-  m_LocalPosition: {x: 1.3029109, y: 0.1904, z: 0}
-  m_LocalScale: {x: -0.9629329, y: 1.1529776, z: 0.75}
+  m_LocalRotation: {x: -0, y: 0, z: 0.6482335, w: 0.7614416}
+  m_LocalPosition: {x: -0.38346833, y: -0.0249717, z: 0}
+  m_LocalScale: {x: 0.7274038, y: 0.80024016, z: 0.75}
   m_Children:
   - {fileID: 1101233789}
-  m_Father: {fileID: 525546078}
-  m_RootOrder: 3
+  m_Father: {fileID: 1884870678}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -69.397}
 --- !u!114 &1730102848
 MonoBehaviour:
@@ -1995,7 +1997,7 @@ Transform:
   m_LocalScale: {x: 2.491072, y: 2.98625, z: 2.389}
   m_Children: []
   m_Father: {fileID: 525546078}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1837802846
 SpriteRenderer:
@@ -2113,7 +2115,9 @@ Transform:
   m_LocalPosition: {x: 0.753, y: 0.113, z: 0}
   m_LocalScale: {x: -1.4456186, y: 1.3220519, z: 1}
   m_Children:
+  - {fileID: 1730102847}
   - {fileID: 680761018}
+  - {fileID: 100057833}
   m_Father: {fileID: 525546078}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 11.42}
